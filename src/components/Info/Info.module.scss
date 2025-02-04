@@ -1,0 +1,47 @@
+.Info {
+  width: 100%;
+  background: pink;
+
+  display: flex;
+
+  flex-direction: column;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: red;
+
+    .capital {
+      p {
+        color: #ffffff;
+        font-size: 50px;
+      }
+    }
+
+    .deposit {
+      display: flex;
+      flex-direction: column;
+
+      .balance,
+      .hold {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+      }
+
+      p {
+        color: #ffffff;
+        font-size: 20px;
+      }
+    }
+  }
+}
