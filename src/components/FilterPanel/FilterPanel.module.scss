@@ -1,6 +1,8 @@
 .FilterPanel {
   width: 100%;
-
-  background: blueviolet;
+  gap: 15px;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }

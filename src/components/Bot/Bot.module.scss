@@ -1,7 +1,10 @@
 .Bot {
-  background: lime;
-  width: 200px;
-  height: 200px;
+  width: calc((100% / 3) - 5px);
+  height: 150px;
+
+  background: rgba($color: #ffffff, $alpha: 0.1);
+
+  border-radius: 10px;
 
   display: flex;
 
@@ -15,17 +18,17 @@
 
   align-items: center;
 
-  h4,
-  h5 {
+  h5,
+  h6 {
     margin: 0;
   }
 
-  h4 {
+  h5 {
     color: #ffffff;
   }
 
   img {
-    width: 70%;
-    height: 70%;
+    width: 80px;
+    height: 80px;
   }
 }

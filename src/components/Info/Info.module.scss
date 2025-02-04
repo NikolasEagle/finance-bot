@@ -1,41 +1,47 @@
 .Info {
   width: 100%;
-  background: pink;
 
   display: flex;
 
   flex-direction: column;
 
-  h3,
+  h4,
   p {
     margin: 0;
+  }
+
+  span {
+    color: #ffffff;
   }
 
   .main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    width: 100%;
     align-items: center;
-
-    background: red;
 
     .capital {
       p {
         color: #ffffff;
-        font-size: 50px;
+        font-size: 40px;
       }
     }
 
     .deposit {
       display: flex;
-      flex-direction: column;
 
-      .balance,
-      .hold {
+      gap: 15px;
+
+      .names,
+      .values {
         display: flex;
-        justify-content: space-between;
-        gap: 15px;
+        flex-direction: column;
+      }
+
+      .values {
+        align-items: flex-end;
+        color: #ffffff;
       }
 
       p {

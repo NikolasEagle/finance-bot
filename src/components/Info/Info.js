@@ -15,7 +15,7 @@ export default function Info() {
   return (
     <div className={styles.Info}>
       <div className={styles.header}>
-        <h3>TRADING CAPITAL</h3>
+        <h4>TRADING CAPITAL</h4>
       </div>
       <div className={styles.main}>
         <div className={styles.capital}>
@@ -25,13 +25,13 @@ export default function Info() {
           </p>
         </div>
         <div className={styles.deposit}>
-          <div className={styles.balance}>
-            <h3>BALANCE: </h3>
-            <p>{balance}</p>
+          <div className={styles.names}>
+            <h4>BALANCE:</h4>
+            <h4>ON HOLD:</h4>
           </div>
-          <div className={styles.hold}>
-            <h3>ON HOLD: </h3>
-            <p>{on_hold}</p>
+          <div className={styles.values}>
+            <h4>{balance}</h4>
+            <h4>{on_hold}</h4>
           </div>
         </div>
       </div>
