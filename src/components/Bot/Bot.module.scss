@@ -1,0 +1,31 @@
+.Bot {
+  background: lime;
+  width: 200px;
+  height: 200px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  flex-direction: column;
+
+  gap: 0;
+
+  justify-content: center;
+
+  align-items: center;
+
+  h4,
+  h5 {
+    margin: 0;
+  }
+
+  h4 {
+    color: #ffffff;
+  }
+
+  img {
+    width: 70%;
+    height: 70%;
+  }
+}
