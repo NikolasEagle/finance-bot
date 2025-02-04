@@ -18,7 +18,14 @@ export default function FilterPanel() {
           .slice(2)
           .map((time) => {
             if (time === "all_time") {
-              return <FilterButton text={time.replace("_", " ")} />;
+              return (
+                <FilterButton
+                  text={
+                    time.replace("_", " ")[0].toUpperCase() +
+                    time.replace("_", " ").slice(1)
+                  }
+                />
+              );
             }
 
             return <FilterButton text={time} />;

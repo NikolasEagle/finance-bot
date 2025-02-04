@@ -1,6 +1,6 @@
 .Bot {
-  width: calc((100% / 3) - 5px);
-  height: 150px;
+  width: calc((100% / 3) - 25px);
+  height: calc((100% / 3) - 25px);
 
   background: rgba($color: #ffffff, $alpha: 0.1);
 
@@ -13,6 +13,8 @@
   flex-direction: column;
 
   gap: 0;
+
+  padding: 10px;
 
   justify-content: center;
 
