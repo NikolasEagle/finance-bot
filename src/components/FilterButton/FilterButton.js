@@ -23,7 +23,11 @@ export default function FilterButton({ active, text }) {
           : styles["FilterButton"]
       }
     >
-      <b>{text}</b>
+      <b>
+        {text === "all_time"
+          ? `${text[0].toUpperCase()}${text.slice(1)}`.replace("_", " ")
+          : text}
+      </b>
     </button>
   );
 }

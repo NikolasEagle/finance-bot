@@ -41,14 +41,14 @@ export default function Chart() {
 
   const context = useContext(AppContext);
 
-  const { timeRange, setTimeRange } = context;
+  const { timeRange, kindBot } = context;
+
+  const { bots } = context.data;
 
   useEffect(() => {
     let date = new Date();
 
-    let obj = {};
-
-    setTimeRange(localStorage.getItem("time_range"));
+    let dates = {};
 
     if (timeRange === "24h") {
       for (let i = 24; i >= 0; i--) {
@@ -56,12 +56,21 @@ export default function Chart() {
           date.getFullYear(),
           date.getMonth(),
           date.getDate(),
-          date.getHours() - i
+          date.getHours() - i + 1
         );
 
-        console.log(iterDate.getHours());
-
-        obj[`${convertNum(iterDate.getHours())}:00`] = Math.random(0.6, 1);
+        if (i !== 0) {
+          dates[`${convertNum(iterDate.getHours())}:00`] = Math.random();
+        } else {
+          bots &&
+            bots.map((bot) => {
+              if (bot.name === kindBot) {
+                dates[`${convertNum(iterDate.getHours())}:00`] =
+                  dates[Object.keys(dates)[Object.keys(dates).length - 1]] *
+                  (1 - bot[timeRange] / 100);
+              }
+            });
+        }
       }
     } else if (
       timeRange === "7d" ||
@@ -77,18 +86,67 @@ export default function Chart() {
           date.getHours()
         );
 
-        obj[
-          `${convertNum(iterDate.getDate())}.${convertNum(
-            iterDate.getMonth() + 1
-          )}`
-        ] = Math.random(0.6, 1);
+        if (i !== 0) {
+          dates[
+            `${convertNum(iterDate.getDate())}.${convertNum(
+              iterDate.getMonth() + 1
+            )}`
+          ] = Math.random();
+        } else {
+          bots &&
+            bots.map((bot) => {
+              if (bot.name === kindBot) {
+                dates[
+                  `${convertNum(iterDate.getDate())}.${convertNum(
+                    iterDate.getMonth() + 1
+                  )}`
+                ] =
+                  dates[Object.keys(dates)[Object.keys(dates).length - 1]] *
+                  (1 - bot[timeRange] / 100);
+              }
+            });
+        }
+      }
+    } else {
+      const months = [
+        "Jan",
+        "Feb",
+        "March",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      for (let i = 12; i >= 0; i--) {
+        const iterDate = new Date(
+          date.getFullYear(),
+          date.getMonth() - i + 1,
+          date.getDate(),
+          date.getHours()
+        );
+
+        if (i !== 0) {
+          dates[months[iterDate.getMonth()]] = Math.random();
+        } else {
+          bots &&
+            bots.map((bot) => {
+              if (bot.name === kindBot) {
+                dates[months[iterDate.getMonth()]] =
+                  dates[Object.keys(dates)[0]] * (1 - bot[timeRange] / 100);
+              }
+            });
+        }
       }
     }
-
-    console.log(obj);
-
-    setnames(obj);
-  }, [timeRange]);
+    console.table(dates);
+    setnames(dates);
+  }, [timeRange, kindBot]);
 
   const options = {
     responsive: true,
