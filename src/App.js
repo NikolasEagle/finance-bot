@@ -12,8 +12,16 @@ export const AppContext = createContext();
 export default function App() {
   const [data, setData] = useState({});
 
-  async function getData(timeRange) {
-    localStorage.setItem("time_range", timeRange);
+  const [timeRange, setTimeRange] = useState(
+    localStorage.getItem("time_range")
+      ? localStorage.getItem("time_range")
+      : "24h"
+  );
+
+  async function getData(time_range) {
+    localStorage.setItem("time_range", time_range);
+
+    setTimeRange(time_range);
 
     try {
       const response = await fetch("/data.min.json");
@@ -27,11 +35,17 @@ export default function App() {
   }
 
   useEffect(() => {
-    getData("24h");
+    getData(
+      localStorage.getItem("time_range")
+        ? localStorage.getItem("time_range")
+        : "24h"
+    );
   }, []);
 
   return (
-    <AppContext.Provider value={{ data, setData, getData }}>
+    <AppContext.Provider
+      value={{ data, setData, getData, timeRange, setTimeRange }}
+    >
       <div className="App">
         <Header />
         <Info />
