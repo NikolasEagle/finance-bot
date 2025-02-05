@@ -1,8 +1,24 @@
+import { useContext } from "react";
 import styles from "./Bot.module.scss";
+import { AppContext } from "../../App";
 
-export default function Bot({ name, percent }) {
+export default function Bot({ active, name, percent }) {
+  const context = useContext(AppContext);
+
+  const { getData, timeRange } = context;
+
+  async function handleClick() {
+    await getData(timeRange, name);
+  }
+
   return (
-    <div tabIndex={0} className={styles.Bot}>
+    <div
+      onClick={() => handleClick()}
+      tabIndex={0}
+      className={
+        active ? [styles["Bot"], styles["active"]].join(" ") : styles.Bot
+      }
+    >
       <img src={`/${name}.svg`} />
       <h5>{name.toUpperCase().replace("_", " ")}</h5>
       <h5

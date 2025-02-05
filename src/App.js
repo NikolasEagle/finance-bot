@@ -18,10 +18,20 @@ export default function App() {
       : "24h"
   );
 
-  async function getData(time_range) {
+  const [kindBot, setKindBot] = useState(
+    localStorage.getItem("kind_bot")
+      ? localStorage.getItem("kind_bot")
+      : "yellow_bot"
+  );
+
+  async function getData(time_range, kind_bot) {
     localStorage.setItem("time_range", time_range);
 
     setTimeRange(time_range);
+
+    localStorage.setItem("kind_bot", kind_bot);
+
+    setKindBot(kind_bot);
 
     try {
       const response = await fetch("/data.min.json");
@@ -38,13 +48,24 @@ export default function App() {
     getData(
       localStorage.getItem("time_range")
         ? localStorage.getItem("time_range")
-        : "24h"
+        : "24h",
+      localStorage.getItem("kind_bot")
+        ? localStorage.getItem("kind_bot")
+        : "yellow_bot"
     );
   }, []);
 
   return (
     <AppContext.Provider
-      value={{ data, setData, getData, timeRange, setTimeRange }}
+      value={{
+        data,
+        setData,
+        getData,
+        timeRange,
+        setTimeRange,
+        kindBot,
+        setKindBot,
+      }}
     >
       <div className="App">
         <Header />

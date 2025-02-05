@@ -6,16 +6,16 @@ import { useContext } from "react";
 export default function FilterButton({ active, text }) {
   const context = useContext(AppContext);
 
-  const { getData } = context;
+  const { getData, kindBot } = context;
 
-  async function handleClick(event) {
-    await getData(event.target.textContent);
+  async function handleClick() {
+    await getData(text, kindBot);
   }
 
   return (
     <button
-      onClick={(event) => {
-        handleClick(event);
+      onClick={() => {
+        handleClick();
       }}
       className={
         active

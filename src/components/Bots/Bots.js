@@ -13,12 +13,24 @@ export default function Bots() {
   return (
     <div className={styles.Bots}>
       {bots &&
-        bots.map((bot) => (
-          <Bot
-            name={bot.name}
-            percent={bot[localStorage.getItem("time_range")]}
-          />
-        ))}
+        bots.map((bot) => {
+          if (bot.name === localStorage.getItem("kind_bot")) {
+            return (
+              <Bot
+                active={true}
+                name={bot.name}
+                percent={bot[localStorage.getItem("time_range")]}
+              />
+            );
+          }
+          return (
+            <Bot
+              active={false}
+              name={bot.name}
+              percent={bot[localStorage.getItem("time_range")]}
+            />
+          );
+        })}
     </div>
   );
 }
