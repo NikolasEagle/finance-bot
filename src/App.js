@@ -12,13 +12,13 @@ export const AppContext = createContext();
 export default function App() {
   const [data, setData] = useState({});
 
-  async function getData() {
+  async function getData(timeRange) {
+    localStorage.setItem("time_range", timeRange);
+
     try {
       const response = await fetch("/data.min.json");
 
       const body = await response.json();
-
-      console.log(body);
 
       setData(body);
     } catch (error) {
@@ -27,11 +27,11 @@ export default function App() {
   }
 
   useEffect(() => {
-    getData();
+    getData("24h");
   }, []);
 
   return (
-    <AppContext.Provider value={{ data, setData }}>
+    <AppContext.Provider value={{ data, setData, getData }}>
       <div className="App">
         <Header />
         <Info />

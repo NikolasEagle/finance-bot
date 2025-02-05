@@ -12,7 +12,13 @@ export default function Bots() {
   const { bots } = context.data;
   return (
     <div className={styles.Bots}>
-      {bots && bots.map((bot) => <Bot name={bot.name} />)}
+      {bots &&
+        bots.map((bot) => (
+          <Bot
+            name={bot.name}
+            percent={bot[localStorage.getItem("time_range")]}
+          />
+        ))}
     </div>
   );
 }

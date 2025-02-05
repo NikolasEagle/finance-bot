@@ -7,8 +7,6 @@ import styles from "./Info.module.scss";
 export default function Info() {
   const context = useContext(AppContext);
 
-  console.log(context);
-
   const { trading_capital, trading_capital_currency, balance, on_hold } =
     context.data;
 

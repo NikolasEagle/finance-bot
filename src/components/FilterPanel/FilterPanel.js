@@ -17,18 +17,11 @@ export default function FilterPanel() {
         Object.keys(bots[0])
           .slice(2)
           .map((time) => {
-            if (time === "all_time") {
-              return (
-                <FilterButton
-                  text={
-                    time.replace("_", " ")[0].toUpperCase() +
-                    time.replace("_", " ").slice(1)
-                  }
-                />
-              );
+            if (time === localStorage.getItem("time_range")) {
+              return <FilterButton active={true} text={time} />;
+            } else {
+              return <FilterButton active={false} text={time} />;
             }
-
-            return <FilterButton text={time} />;
           })}
     </div>
   );
