@@ -144,7 +144,6 @@ export default function Chart() {
         }
       }
     }
-    console.table(dates);
     setnames(dates);
   }, [timeRange, kindBot]);
 
