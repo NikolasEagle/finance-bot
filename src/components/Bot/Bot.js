@@ -20,7 +20,7 @@ export default function Bot({ active, name, percent }) {
       }
     >
       <img src={`/${name}.svg`} />
-      <h5>{name.toUpperCase().replace("_", " ")}</h5>
+      <h6>{name.toUpperCase().replace("_", " ")}</h6>
       <h5
         style={percent > 0 ? { color: "#5ea853" } : { color: "#f2427e" }}
         className={styles.percent}

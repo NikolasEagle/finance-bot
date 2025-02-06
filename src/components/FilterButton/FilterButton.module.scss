@@ -1,13 +1,15 @@
 .FilterButton {
   cursor: pointer;
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 5px 15px;
   background: none;
   border: solid 1px #4d6078;
   color: #4d6078;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   transition: 500ms;
+
+  width: calc((100% - 100px - 60px) / 4);
 
   &:hover,
   &:focus,

@@ -14,6 +14,7 @@ export default function FilterButton({ active, text }) {
 
   return (
     <button
+      style={text === "all_time" ? { width: "85px" } : null}
       onClick={() => {
         handleClick();
       }}
